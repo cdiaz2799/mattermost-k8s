@@ -11,8 +11,8 @@ resource "digitalocean_kubernetes_cluster" "mattermost-k8s" {
   ha           = false
 
   node_pool {
-    name = "mattermost-pool"
-    size = "s-1vcpu-2gb"
+    name       = "mattermost-pool"
+    size       = "s-1vcpu-2gb"
     node_count = 1
   }
 }
