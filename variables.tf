@@ -50,3 +50,20 @@ variable "mattermost_version" {
   default     = "9.0"
 }
 
+variable "spaces_access_id" {
+  description = "DigitalOcean Spaces Access ID"
+  type        = string
+  sensitive   = true
+}
+
+variable "spaces_secret_key" {
+  description = "DigitalOcean Spaces Secret Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "cloudflare_zone" {
+  description = "Cloudflare Zone / Domain Name"
+  type        = string
+  sensitive   = false
+}

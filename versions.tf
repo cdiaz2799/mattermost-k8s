@@ -18,31 +18,11 @@ terraform {
     }
     onepassword = {
       source  = "1Password/onepassword"
-      version = "1.2.0"
+      version = ">= 1.2.0"
+    }
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = ">= 4.16.0"
     }
   }
-}
-
-provider "digitalocean" {
-  token = var.do_token
-}
-
-provider "kubernetes" {
-  host                   = digitalocean_kubernetes_cluster.mattermost-k8s.endpoint
-  token                  = digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].token
-  cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].cluster_ca_certificate)
-}
-provider "http" {
-
-}
-
-provider "kubectl" {
-  host                   = digitalocean_kubernetes_cluster.mattermost-k8s.endpoint
-  token                  = digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].token
-  cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].cluster_ca_certificate)
-}
-
-provider "onepassword" {
-  url   = var.op_url
-  token = var.op_token
 }

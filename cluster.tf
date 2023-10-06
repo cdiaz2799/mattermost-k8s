@@ -12,15 +12,12 @@ resource "digitalocean_kubernetes_cluster" "mattermost-k8s" {
 
   node_pool {
     name       = "mattermost-pool"
-    size       = "s-1vcpu-2gb"
+    size       = "s-2vcpu-4gb"
     node_count = 1
   }
 }
 
-output "cluster_id" {
-  value = digitalocean_kubernetes_cluster.mattermost-k8s.id
-}
-
 output "cluster_name" {
-  value = digitalocean_kubernetes_cluster.mattermost-k8s.name
+  value       = digitalocean_kubernetes_cluster.mattermost-k8s.name
+  description = "DigitalOcean Cluster Name"
 }
