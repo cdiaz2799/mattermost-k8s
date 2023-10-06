@@ -67,3 +67,9 @@ variable "cloudflare_zone" {
   type        = string
   sensitive   = false
 }
+
+variable "gitlab_agent_token" {
+  description = "Gitlab Agent Access Token"
+  type        = string
+  sensitive   = true
+}

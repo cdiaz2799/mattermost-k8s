@@ -9,14 +9,22 @@ provider "kubernetes" {
   token                  = digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].token
   cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].cluster_ca_certificate)
 }
-provider "http" {
 
+provider "helm" {
+  kubernetes {
+    host                   = digitalocean_kubernetes_cluster.mattermost-k8s.endpoint
+    token                  = digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].token
+    cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].cluster_ca_certificate)
+  }
 }
+
+provider "http" {}
 
 provider "kubectl" {
   host                   = digitalocean_kubernetes_cluster.mattermost-k8s.endpoint
   token                  = digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].token
   cluster_ca_certificate = base64decode(digitalocean_kubernetes_cluster.mattermost-k8s.kube_config[0].cluster_ca_certificate)
+  load_config_file       = false
 }
 
 provider "onepassword" {
